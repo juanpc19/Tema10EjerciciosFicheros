@@ -35,13 +35,13 @@ public class Main {
 			}
 			mediaAritmetica = suma / contador;
 
-		} catch (IOException e) {
+		} catch (FileNotFoundException e) {
 			System.out.println("Error, archivo no encontrado.");
 
 		} finally {
-			
 			try {
 				reader.close();
+				
 			} catch (IOException e) {
 				System.out.println("Error al cerrar el archivo.");
 			}
