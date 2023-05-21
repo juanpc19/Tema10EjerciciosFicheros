@@ -10,40 +10,38 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 
-		BufferedReader fichero = null;
-
-		double suma;
-
-		int contador;
-
-		double mediaAritmetica;
-
+		// reader = new BufferedReader(new FileReader("src//ejercicio1"));
+		BufferedReader reader = null;
+		double suma = 0;
+		int contador = 0;
+		double mediaAritmetica = 0;
 		String linea = "";
-
 		String numerosLinea[];
 
 		try {
-			fichero = new BufferedReader(new FileReader("src//ejercicio1"));
-			linea = fichero.readLine();
+			reader = new BufferedReader(new FileReader("src//ejercicio1"));
 
-			while (linea != null) {
-				linea = fichero.readLine();
-				numerosLinea = linea.split(" ");
-				//for each
+			linea = reader.readLine();
+
+			numerosLinea = linea.split(" ");
+
+			for (int i = 0; i < numerosLinea.length; i++) {
+				suma += Double.parseDouble(numerosLinea[i]);
+				contador++;
 			}
+			mediaAritmetica = suma / contador;
+
+		} catch (IOException e) {
+			System.out.println("errer");
 
 		} finally {
-			fichero.close();
+			try {
+				reader.close();
+			} catch (IOException e) {
+				System.out.println("errer");
+			}
 		}
-
-		/*
-		 * FileWriter escribir = null; try { escribir = new
-		 * FileWriter("src//ejercicio1"); for (int i =0; i<6;i++) { escribir.write(1); }
-		 * 
-		 * } catch (IOException e) { System.err.println(e.getMessage()); } finally {
-		 * escribir.flush(); escribir.close(); }
-		 */
-
+		System.out.println("la media ees: " + mediaAritmetica);
 	}
 
 }
