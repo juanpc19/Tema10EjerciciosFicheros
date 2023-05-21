@@ -10,16 +10,20 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 
-		// reader = new BufferedReader(new FileReader("src//ejercicio1"));
 		BufferedReader reader = null;
+
 		double suma = 0;
+
 		int contador = 0;
+
 		double mediaAritmetica = 0;
+
 		String linea = "";
+
 		String numerosLinea[];
 
 		try {
-			reader = new BufferedReader(new FileReader("src//ejercicio1"));
+			reader = new BufferedReader(new FileReader("src/ejercicio1/NumerosReales.txt"));
 
 			linea = reader.readLine();
 
@@ -32,16 +36,17 @@ public class Main {
 			mediaAritmetica = suma / contador;
 
 		} catch (IOException e) {
-			System.out.println("errer");
+			System.out.println("Error, archivo no encontrado.");
 
 		} finally {
+			
 			try {
 				reader.close();
 			} catch (IOException e) {
-				System.out.println("errer");
+				System.out.println("Error al cerrar el archivo.");
 			}
 		}
-		System.out.println("la media ees: " + mediaAritmetica);
+		System.out.println("La suma total es igual a : " + suma + "\nLa media es: " + mediaAritmetica);
 	}
 
 }
