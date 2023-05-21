@@ -3,7 +3,6 @@ package ejercicio1;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class Main {
@@ -41,7 +40,7 @@ public class Main {
 		} finally {
 			try {
 				reader.close();
-				
+
 			} catch (IOException e) {
 				System.out.println("Error al cerrar el archivo.");
 			}
