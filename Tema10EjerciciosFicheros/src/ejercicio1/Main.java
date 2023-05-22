@@ -38,11 +38,13 @@ public class Main {
 			System.out.println("Error, archivo no encontrado.");
 
 		} finally {
-			try {
-				reader.close();
+			if (reader != null) {
+				try {
+					reader.close();
 
-			} catch (IOException e) {
-				System.out.println("Error al cerrar el archivo.");
+				} catch (IOException e) {
+					System.out.println("Error al cerrar el archivo.");
+				}
 			}
 		}
 		System.out.println("La suma total es igual a : " + suma + "\nLa media es: " + mediaAritmetica);

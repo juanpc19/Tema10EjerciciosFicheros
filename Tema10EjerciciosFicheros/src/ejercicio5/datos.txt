@@ -1,0 +1,3 @@
+Nombre: juan, edad: 29
+Nombre: paxi, edad: 20
+Nombre: paco, edad: 19

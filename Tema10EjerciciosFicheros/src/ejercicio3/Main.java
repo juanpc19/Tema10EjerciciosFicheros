@@ -46,11 +46,11 @@ public class Main {
 					}
 
 					case 1 -> {
-						sumaEdades += Integer.valueOf(lineaSeparada[1]);
+						sumaEdades += Integer.parseInt(lineaSeparada[1]);
 					}
 
 					case 2 -> {
-						sumaAlturas += Double.valueOf(lineaSeparada[2]);
+						sumaAlturas += Double.parseDouble(lineaSeparada[2]);
 					}
 
 					}
@@ -77,14 +77,15 @@ public class Main {
 			System.out.println("Error, siguiente linea igual a null.");
 
 		} finally {
-			try {
-				lector.close();
+			if (lector != null) {
+				try {
+					lector.close();
 
-			} catch (IOException e) {
-				System.out.println("Error, al cerrar el archivo.");
+				} catch (IOException e) {
+					System.out.println("Error, al cerrar el archivo.");
+				}
 			}
 		}
-
 	}
 
 }
