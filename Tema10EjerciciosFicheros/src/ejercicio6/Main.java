@@ -42,7 +42,7 @@ public class Main {
 				try {
 					escriba.flush();
 				} catch (IOException e) {
-					System.out.println("Error, no se puedo hacer el flush.");
+					System.out.println("Error, al hacer el flush.");
 				}
 				try {
 					escriba.close();
@@ -94,7 +94,7 @@ public class Main {
 				try {
 					escriba.flush();
 				} catch (IOException e) {
-					System.out.println("Error, no se puedo hacer el flush.");
+					System.out.println("Error, al hacer el flush.");
 				}
 				try {
 					escriba.close();
