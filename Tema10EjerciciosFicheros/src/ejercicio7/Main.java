@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.TreeMap;
 
@@ -41,7 +42,7 @@ public class Main {
 
 				if (agenda.size() < 20) {
 
-					if (nombre != null && !nombre.isEmpty() && numeroTelefono > 99999999) {
+					if (nombre != null && !nombre.isEmpty() && numeroTelefono > 0) {
 						agenda.put(nombre, numeroTelefono);
 					} else {
 						System.out.println("Error al introducir los datos.");
@@ -67,8 +68,11 @@ public class Main {
 			}
 			case 3 -> {
 
-				System.out.println(agenda);
-				System.out.println();
+				for (Entry<String, Integer> p : agenda.entrySet()) {
+					System.out.println("Nombre: " + p.getKey());
+					System.out.println("Numero telefono: " + p.getValue());
+					System.out.println();
+				}
 
 			}
 			case 4 -> {
@@ -77,10 +81,13 @@ public class Main {
 				try {
 					escriba = new BufferedWriter(new FileWriter("src\\ejercicio7\\Agenda.txt", true));
 
-					// escriba.write("a");
-					// escriba.newLine();
-					// necesito extraer datoos separados para pasarlos a int y luego al texto,
-					// tambien donde empieza y acaba cadauno
+					for (Entry<String, Integer> p : agenda.entrySet()) {
+
+						escriba.write("Nombre: " + p.getKey());
+						escriba.write(" Numero telefono: " + p.getValue());
+						escriba.newLine();
+					}
+
 				} catch (IOException e) {
 					System.out.println("Error al crear el archivo.");
 
