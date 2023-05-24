@@ -10,6 +10,8 @@ import java.util.Scanner;
 
 public class Main {
 
+	private static final String FICHERO = "src\\ejercicio8\\RegistroMeteorologico.txt";
+
 	public static void main(String[] args) {
 
 		//guardar temperaturas en listas y puede que fechas tambien
@@ -29,7 +31,7 @@ public class Main {
 
 		int temperaturaMax = 0;
 
-		int temperaturaMaxFinal = 0;
+		int temperaturaMaxFinal = Integer.MIN_VALUE;
 
 		int temperaturaMin = 0;
 
@@ -47,7 +49,7 @@ public class Main {
 
 				try {
 
-					escriba = new BufferedWriter(new FileWriter("src\\ejercicio8\\RegistroMeteorologico.txt", true));
+					escriba = new BufferedWriter(new FileWriter(FICHERO, true));
 
 					System.out.println("Introduzca la fecha en el siguiente formato: 2023-01-15. ");
 					fecha = dogma.nextLine();
@@ -100,7 +102,7 @@ public class Main {
 
 			case 2 -> {
 				try {
-					lector = new BufferedReader(new FileReader("src\\ejercicio8\\RegistroMeteorologico.txt"));
+					lector = new BufferedReader(new FileReader(FICHERO));
 
 					linea = lector.readLine();
 
