@@ -14,7 +14,6 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		//guardar temperaturas en listas y puede que fechas tambien
 		Scanner dogma = new Scanner(System.in);
 
 		BufferedWriter escriba = null;
@@ -23,19 +22,19 @@ public class Main {
 
 		String linea = "";
 
-		boolean archivoVacio = true;
+		String lineaSeparada[];
 
 		int seleccion = 0;
 
 		String fecha = "";
 
-		int temperaturaMax = 0;
+		double temperaturaMax = Double.MIN_VALUE;
 
-		int temperaturaMaxFinal = Integer.MIN_VALUE;
+		double temperaturaMaxFinal = Double.MIN_VALUE;
 
-		int temperaturaMin = 0;
+		double temperaturaMin = Double.MAX_VALUE;
 
-		int temperaturaMinFinal = 0;
+		double temperaturaMinFinal = Double.MAX_VALUE;
 
 		while (seleccion != 3) {
 			MenuCrud.menu();
@@ -53,30 +52,18 @@ public class Main {
 
 					System.out.println("Introduzca la fecha en el siguiente formato: 2023-01-15. ");
 					fecha = dogma.nextLine();
-					
+
 					System.out.println("Introduzca la temperatura maxima. ");
-					temperaturaMax = dogma.nextInt();
-					if (temperaturaMax > temperaturaMaxFinal) {
-						temperaturaMaxFinal = temperaturaMax;
-					}
-					
+					temperaturaMax = dogma.nextDouble();
+
 					System.out.println("Introduzca la temperatura minima. ");
-					temperaturaMin = dogma.nextInt();
-					if (temperaturaMin < temperaturaMinFinal) {
-						temperaturaMinFinal = temperaturaMin;
-					}
+					temperaturaMin = dogma.nextDouble();
 
 					dogma.nextLine();
 
-					if (archivoVacio == true) {
-						escriba.write("Fecha, Temperatura máxima, Temperatura mínima.");
-						escriba.newLine();
-					}
-					archivoVacio = false;
-
 					escriba.write(fecha + ", ");
 					escriba.write(temperaturaMax + ", ");
-					escriba.write(temperaturaMin + ".");
+					escriba.write(temperaturaMin + "");
 					escriba.newLine();
 
 				} catch (IOException e) {
@@ -106,17 +93,32 @@ public class Main {
 
 					linea = lector.readLine();
 
+					System.out.println("Fecha, Temperatura máxima, Temperatura mínima.");
+
 					while (linea != null) {
+
+						lineaSeparada = linea.split(",");
 						System.out.println(linea);
+
+						if (temperaturaMaxFinal < Double.parseDouble(lineaSeparada[1])) {
+							temperaturaMaxFinal = Double.parseDouble(lineaSeparada[1]);
+						}
+
+						if (temperaturaMinFinal > Double.parseDouble(lineaSeparada[2])) {
+							temperaturaMinFinal = Double.parseDouble(lineaSeparada[2]);
+						}
+
 						linea = lector.readLine();
+
 					}
-					System.out.println(temperaturaMaxFinal);
-					System.out.println(temperaturaMinFinal);
-					
+
+					System.out.println("Temperatura maxima: " + temperaturaMaxFinal);
+					System.out.println("Temperatura minima: " + temperaturaMinFinal);
+
 				} catch (FileNotFoundException e) {
 					System.out.println("Error, archivo no encontrado.");
 				} catch (IOException e) {
-					System.err.println("Error, siguiente linea igual a null.");
+					System.out.println("Error, siguiente linea igual a null.");
 
 				} finally {
 					if (lector != null) {
